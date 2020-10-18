@@ -16,7 +16,6 @@ public class LoanCalculator {
         this.loanRepository = loanRepository;
     }
 
-    private Double amount;
 
     private Double rate = 1.1;
 
@@ -30,12 +29,12 @@ public class LoanCalculator {
 
     }
 
-    public Integer checkYourInterest(Long id){
+    public Integer checkYourInterest(Long id) {
         BigDecimal amount = loanRepository.getOne(id).getAmount();
         BigDecimal amountWithInterest = calculate(amount.doubleValue());
-
         int score = amountWithInterest.intValue();
-        return  score;
+
+        return score;
     }
 
 

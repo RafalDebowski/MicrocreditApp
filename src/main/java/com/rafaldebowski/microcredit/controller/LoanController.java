@@ -30,21 +30,20 @@ public class LoanController {
     }
 
 
-
     @PostMapping
-    public ResponseEntity<Void> createLoan(@RequestBody Loan loan){
+    public ResponseEntity<Void> createLoan(@RequestBody Loan loan) {
         loanService.createLoan(loan);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
     @GetMapping
-    public ResponseEntity<List<Loan>> getAllLoans(){
+    public ResponseEntity<List<Loan>> getAllLoans() {
         List<Loan> allLoans = loanService.getAllLoans();
         return new ResponseEntity<>(allLoans, HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Integer> getAmountWithInterestById(@PathVariable Long id){
+    public ResponseEntity<Integer> getAmountWithInterestById(@PathVariable Long id) {
         Integer amountWithInterest = loanCalculator.checkYourInterest(id);
         return new ResponseEntity<>(amountWithInterest, HttpStatus.OK);
     }
